@@ -20,6 +20,8 @@ def adicionar_item_para_comanda(id_item: int, quantidade: int, comanda: list[dic
 
     comanda.append(informacoes_do_item_para_adicionar)
 
+    return informacoes_do_item_para_adicionar
+
 
 def calcular_total_comanda(comanda: list[dict]):
     total = 0
@@ -30,7 +32,7 @@ def calcular_total_comanda(comanda: list[dict]):
 
     return total
 
-    # list comprehension
+    # alternativa com list comprehension
     # total = sum(item_comanda["sub_total"] for item_comanda in comanda)
 
     # return total
