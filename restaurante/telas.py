@@ -1,9 +1,33 @@
 import os
-from restaurante.gerenciador import adicionar_item_para_comanda
+from restaurante.gerenciador import adicionar_item_para_comanda, calcular_total_comanda
 from datetime import datetime
+
+from restaurante.relatorio import (
+    salvar_relatorio_csv,
+    salvar_relatorio_json,
+    salvar_relatorio_txt,
+)
 
 
 COMANDA_USUARIO = []
+
+
+def gerar_relatorio():
+    relatorio = ""
+    relatorio += "Cafeteria Kenzie - Relatório\n\n"
+    horario_agora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    relatorio += f"Data e Hora {horario_agora}\n\n"
+    relatorio += "Itens consumidos:\n"
+
+    for item in COMANDA_USUARIO:
+        relatorio += f"{item['quantidade']}un. - {item['nome']} - Valor unitário: R$ {item['preco']:.2f} - Sub-total: R$ {item['sub_total']:.2f}\n"
+
+    total_comanda = calcular_total_comanda(COMANDA_USUARIO)
+    relatorio += f"\nTotal da comanda: R$ {total_comanda:.2f}\n"
+
+    print(relatorio)
+
+    return relatorio
 
 
 def tela_checkout():
@@ -12,7 +36,7 @@ def tela_checkout():
     while True:
         for item in COMANDA_USUARIO:
             print(
-                f"{item['quantidade']}un. - {item['nome']} - R$ {item['preco']} - {item['sub_total']}"
+                f"{item['quantidade']}un. - {item['nome']} - Valor unitário: R$ {item['preco']:.2f} - Sub-total: R$ {item['sub_total']:.2f}"
             )
 
         print("\nO que deseja fazer?\n")
@@ -25,9 +49,13 @@ def tela_checkout():
         if opcao_selecionada == "1":
             break
         elif opcao_selecionada == "2":
-            horario = datetime.now()
-            print(f"Horario atual: {horario}")
-            print("\nGerar relatório")
+            relatorio = gerar_relatorio()
+            timestamp = datetime.now().timestamp()
+            nome_arquivo = f"relatorio-{timestamp}"
+            salvar_relatorio_txt(relatorio=relatorio, nome_arquivo=nome_arquivo)
+
+            salvar_relatorio_csv(COMANDA_USUARIO, nome_arquivo)
+            salvar_relatorio_json(COMANDA_USUARIO, nome_arquivo)
             exit()
         else:
             print("Escolha uma opção válida (1 ou 2)\n")

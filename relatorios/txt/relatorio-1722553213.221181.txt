@@ -1,0 +1,9 @@
+Cafeteria Kenzie - Relatório
+
+Data e Hora 01/08/2024 20:00:13
+
+Itens consumidos:
+2un. - PANQUECA - Valor unitário: R$ 7.50 - Sub-total: R$ 15.00
+10un. - PÃO DE QUEIJO - Valor unitário: R$ 3.00 - Sub-total: R$ 30.00
+
+Total da comanda: R$ 45.00

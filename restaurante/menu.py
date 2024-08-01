@@ -48,5 +48,5 @@ MENU_DISPONIVEL = [
     {"id": 47, "nome": "CROISSANT", "preco": 4.0},
     {"id": 48, "nome": "EMPADA", "preco": 5.0},
     {"id": 49, "nome": "MOUSSE DE CHOCOLATE", "preco": 6.0},
-    {"id": 50, "nome": "PANQUECA", "preco": 7.0},
+    {"id": 50, "nome": "PANQUECA", "preco": 7.5},
 ]

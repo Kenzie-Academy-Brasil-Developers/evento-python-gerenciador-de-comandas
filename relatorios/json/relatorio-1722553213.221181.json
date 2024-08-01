@@ -1,0 +1,16 @@
+[
+  {
+    "id": 50,
+    "nome": "PANQUECA",
+    "preco": 7.5,
+    "quantidade": 2,
+    "sub_total": 15.0
+  },
+  {
+    "id": 36,
+    "nome": "P\u00c3O DE QUEIJO",
+    "preco": 3.0,
+    "quantidade": 10,
+    "sub_total": 30.0
+  }
+]
